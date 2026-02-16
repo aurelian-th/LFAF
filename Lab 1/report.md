@@ -98,6 +98,14 @@ The conversion happens in the `Grammar` class. We iterate through every producti
 * A rule like $S \to dA$ becomes a transition $\delta(S, d) = A$.
 * A rule like $A \to b$ becomes a transition $\delta(A, b) = FinalState$.
 
+## Challenges and difficulties
+
+During implementation I encountered several issues that required extra attention. The random generation of strings from the grammar could risk non-termination when productions cycled or when non-terminals repeatedly expanded without producing terminals; I addressed this by enforcing a limit on derivation steps and preferring productions that yield terminals. Converting the grammar to an automaton revealed edge cases as well: terminal-only productions need an explicit final state, and multiple productions for the same non-terminal and terminal could introduce nondeterminism that must be handled or disambiguated.
+
+Practical debugging problems appeared too: missing keys in the production map caused NullPointerExceptions, and mixing `char` vs `String` representations led to subtle mismatches in transition lookups. Ensuring reproducible tests required controlling the `Random` seed during development. Finally, minor environment issues (classpath and Java preview flags) occasionally interrupted test runs.
+
+These challenges were valuable: they highlighted the need for defensive checks (null/empty rules), clear symbol handling, and safeguards against infinite derivations, all of which made the final implementation more robust.
+
 ## Conclusions and results
 
 In this laboratory work, I successfully modeled a Regular Grammar and converted it into a Finite Automaton.
