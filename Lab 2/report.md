@@ -151,6 +151,8 @@ Is the new Automaton deterministic? true
 
 **Generated DFA visualization:**
 
+<img width="852" height="281" alt="dfa_variant25" src="https://github.com/user-attachments/assets/880dc3b5-03f3-4361-8543-45e34870aa60" />
+
 ## References
 
 1. Course Notes: Formal Languages & Finite Automata.
