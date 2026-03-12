@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Lab 2: Automata conversion\n");
 
-        // Task 1: Chomsky Classification
+        // Task 1: Chomsky classification
         var lab1Grammar = new Grammar();
         System.out.println("[Task 1] Lab 1 Grammar classification:");
         System.out.println("  Result: " + lab1Grammar.classifyChomsky() + "\n");
@@ -24,7 +24,7 @@ public class Main {
         fa.addFinalState("q2");
 
         fa.addTransition("q0", 'a', "q0");
-        fa.addTransition("q0", 'a', "q1"); // NDFA branch!
+        fa.addTransition("q0", 'a', "q1");
         fa.addTransition("q1", 'a', "q2");
         fa.addTransition("q1", 'b', "q1");
         fa.addTransition("q2", 'a', "q3");
@@ -34,7 +34,7 @@ public class Main {
         fa.printTransitions();
 
         // Task 3: FA to Grammar
-        System.out.println("\n[Task 3] Converting FA to Regular Grammar:");
+        System.out.println("\n[Task 3] Converting FA to regular grammar:");
         var convertedGrammar = fa.toRegularGrammar();
         convertedGrammar.printRules();
 
@@ -48,7 +48,7 @@ public class Main {
         dfa.printTransitions();
         System.out.println("\nIs the new Automaton deterministic? " + dfa.isDeterministic());
 
-        // Task 6: BONUS POINT (Auto-Generate Graph)
+        // Task 6: bonus (auto-generate graph)
         System.out.println("\n[Task 6] Generating visual graph.");
         var dotCode = dfa.toGraphviz();
         saveGraphFromAPI(dotCode, "dfa_variant25.png");
@@ -72,7 +72,7 @@ public class Main {
                 Files.write(Path.of(filename), response.body());
                 System.out.println("  Success! Graph saved automatically as: " + filename);
             } else {
-                System.out.println("  API Error. Status code: " + response.statusCode());
+                System.out.println("  API error. Status code: " + response.statusCode());
             }
         } catch (Exception e) {
             System.out.println("  Failed to generate graph automatically: " + e.getMessage());

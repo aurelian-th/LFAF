@@ -129,8 +129,8 @@ public class FiniteAutomaton {
     }
 
     public void printTransitions() {
-        System.out.println("  Start State: " + startState);
-        System.out.println("  Final States: " + finalStates);
+        System.out.println("  Start state: " + startState);
+        System.out.println("  Final states: " + finalStates);
         System.out.println("  Transitions:");
         for (var state : transitions.keySet()) {
             for (var input : transitions.get(state).keySet()) {

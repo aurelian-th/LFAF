@@ -29,7 +29,7 @@ public class Grammar {
         productions.computeIfAbsent(key, k -> new ArrayList<>()).add(value);
     }
 
-    // Clears out lab 1 rules
+    // clear out lab 1 rules
     public void clearRules() {
         this.productions.clear();
         this.vn.clear();
@@ -68,9 +68,9 @@ public class Grammar {
         if (isRegular)
             return "Type 3 (Regular Grammar)";
         if (isContextFree)
-            return "Type 2 (Context-Free Grammar)";
+            return "Type 2 (Context-free Grammar)";
         if (isContextSensitive)
-            return "Type 1 (Context-Sensitive Grammar)";
+            return "Type 1 (Context-sensitive Grammar)";
         return "Type 0 (Unrestricted Grammar)";
     }
 
