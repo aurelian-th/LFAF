@@ -37,7 +37,7 @@ Once the AST is built, I traverse the tree by calling the `.generate()` method o
 * An `AltNode` utilizes `java.util.Random` to pick one of its child branches.
 * A `RepeatNode` generates a random loop bound. As required, undefined limits like `*` are bounded between `0` and `5`, and `+` is bounded between `1` and `5`. The custom $^n$ operator sets both the minimum and maximum boundary strictly to $n$.
 
-**Challenges and difficulties**
+## Challenges and difficulties
 The primary challenge was handling operator precedence dynamically without relying on external libraries like `java.util.regex.Pattern`. When parsing strings like `P(Q|R|S)T`, the parser initially struggled to differentiate where the concatenation ended and the alternation began. I resolved this by enforcing strict grammar rules in the recursive descent parser.
 
 Furthermore, the handwritten Variant 1 included non-standard mathematical superscripts like `^+` and `^*`, alongside custom explicit bounds like `^5`. While adding custom logic to parse these bounds, I encountered a critical parsing collision with whitespace. Initially, I used a global `replaceAll("\\s+", "")` to strip all spaces from the input. However, for the expression `1(0|1)^*2(3|4)^5 36`, this aggressively merged the `5` and the `36` into `^536`. As a result, the AST's `RepeatNode` attempted to loop 536 times, causing massive string generation bloat. 
@@ -47,7 +47,7 @@ To overcome this, I removed the global string mutation and instead implemented a
 **Conclusions and results**
 The implementation successfully handles dynamic regex interpretation. By utilizing an AST, the code natively understands deeply nested parentheses and accurately distributes repetitions without hardcoded workarounds. The dynamic whitespace handling ensures robust parsing of complex explicit bounds.
 
-**Console output (Excerpt demonstrating the Execution Trace):**
+## Console output (Excerpt demonstrating the Execution Trace):
 
 ```text
 Processing Regex: (a|b)(c|d)E^+G?
